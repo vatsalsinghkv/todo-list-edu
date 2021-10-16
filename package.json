@@ -1,0 +1,16 @@
+{
+  "name": "todo-list-v1",
+  "version": "1.0.0",
+  "description": "Todo list webapp",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "todo",
+    "list",
+    "express"
+  ],
+  "author": "Vatsal Singh",
+  "license": "ISC"
+}
