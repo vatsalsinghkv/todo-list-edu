@@ -4,7 +4,6 @@ import bodyParser from 'body-parser';
 import _ from 'lodash';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-
 // import { getDate } from './utils/date.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -14,8 +13,12 @@ const __dirname = dirname(__filename);
 const publicDir = join(__dirname, '../public');
 const viewsDir = join(__dirname, '../templates/views');
 
+// Setting Port
+const port = process.env.PORT;
+port ||= 80;
+
 const app = express();
-const PORT = 80;
+
 // Serve static files from public/ (new root) index.html (default)
 app.use(express.static(publicDir));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -165,4 +168,8 @@ app.get('/list/:listName', (req, res) => {
 	});
 });
 
-app.listen(PORT, () => console.log(`Server Started at ${PORT}`));
+app.get('*', (req, res) => {
+	res.send('Error 404. Page not found!');
+});
+
+app.listen(port, () => console.log(`Server Started at ${PORT}`));
