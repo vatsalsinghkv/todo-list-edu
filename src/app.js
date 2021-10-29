@@ -14,8 +14,10 @@ const publicDir = join(__dirname, '../public');
 const viewsDir = join(__dirname, '../templates/views');
 
 // Setting Port
-const port = process.env.PORT;
-port ||= 80;
+let port = process.env.PORT;
+if (port == null || port == '') {
+	port = 3000;
+}
 
 const app = express();
 
@@ -172,4 +174,4 @@ app.get('*', (req, res) => {
 	res.send('Error 404. Page not found!');
 });
 
-app.listen(port, () => console.log(`Server Started at ${PORT}`));
+app.listen(port, () => console.log(`Server Started at ${port}`));
